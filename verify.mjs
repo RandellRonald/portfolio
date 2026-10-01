@@ -1,0 +1,25 @@
+import { chromium } from '@playwright/test';
+import fs from 'node:fs';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});
+await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));
+await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0));
+await page.screenshot({path:'desktop-preview.png',fullPage:true});
+const images=await page.locator('img').evaluateAll(imgs=>imgs.map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})));
+if(images.some(i=>!i.loaded))throw new Error('Image failed: '+JSON.stringify(images));
+for(const id of ['home','about','projects','skills','contact']){await page.locator('nav a[href="#'+id+'"]').click();await page.waitForTimeout(850);if(!(await page.locator('#'+id).count()))throw new Error('Missing section '+id);}
+const links=await page.locator('a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
+for(const href of ['mailto:randellronald5@gmail.com','tel:8075548419','https://github.com/RandellRonald/Smartland','https://github.com/RandellRonald/AutoBlueprint','https://github.com/RandellRonald/AutoKey3D','https://www.linkedin.com/in/randell-ronald-60492336b/'])if(!links.includes(href))throw new Error('Missing link '+href);
+await page.setViewportSize({width:390,height:844});await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});await page.screenshot({path:'mobile-preview.png',fullPage:true});
+if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw new Error('Mobile horizontal overflow');
+await page.getByRole('button',{name:'Open navigation'}).click();await page.locator('nav a[href="#projects"]').click();await page.waitForTimeout(1000);
+if(await page.getByRole('button',{name:'Open navigation'}).getAttribute('aria-expanded')!=='false')throw new Error('Menu did not close');
+await page.getByRole('button',{name:'Open navigation'}).click();await page.keyboard.press('Escape');
+if(await page.getByRole('button',{name:'Open navigation'}).getAttribute('aria-expanded')!=='false')throw new Error('Escape failed');
+await page.emulateMedia({reducedMotion:'reduce'});await page.reload({waitUntil:'networkidle'});
+if(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior)!=='auto')throw new Error('Reduced motion failed');
+if(errors.length)throw new Error(errors.join('\n'));
+fs.writeFileSync('verification.json',JSON.stringify({status:'passed',images,checks:['desktop rendering','section navigation','contact and repository links','mobile no overflow','hamburger navigation','Escape dismissal','reduced motion','no JavaScript exceptions']},null,2));
+console.log('Portfolio verification passed');await browser.close();

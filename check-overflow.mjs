@@ -1,0 +1,2 @@
+import {chromium} from '@playwright/test';
+const b=await chromium.launch({channel:'msedge',headless:true});const p=await b.newPage();for(const w of [390,910]){await p.setViewportSize({width:w,height:900});await p.goto('http://127.0.0.1:5173/');console.log(w,await p.locator('body *').evaluateAll(es=>es.filter(e=>{let r=e.getBoundingClientRect();return r.right>innerWidth+1||r.left< -1}).map(e=>({class:e.className,tag:e.tagName,left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right})).slice(0,20)));}await b.close();

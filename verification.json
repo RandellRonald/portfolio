@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "images": [
+    {
+      "src": "/images/randell-portrait.png",
+      "loaded": true
+    },
+    {
+      "src": "/images/smartland.png",
+      "loaded": true
+    },
+    {
+      "src": "/images/autoblueprint.png",
+      "loaded": true
+    },
+    {
+      "src": "/images/autokey3d.png",
+      "loaded": true
+    }
+  ],
+  "checks": [
+    "desktop rendering",
+    "section navigation",
+    "contact and repository links",
+    "mobile no overflow",
+    "hamburger navigation",
+    "Escape dismissal",
+    "reduced motion",
+    "no JavaScript exceptions"
+  ]
+}
