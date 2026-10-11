@@ -2,19 +2,23 @@
   "status": "passed",
   "images": [
     {
-      "src": "/images/randell-portrait.png",
+      "src": "/images/randell-portrait.webp",
       "loaded": true
     },
     {
-      "src": "/images/smartland.png",
+      "src": "/images/slab.webp",
       "loaded": true
     },
     {
-      "src": "/images/autoblueprint.png",
+      "src": "/images/smartland.webp",
       "loaded": true
     },
     {
-      "src": "/images/autokey3d.png",
+      "src": "/images/autoblueprint.webp",
+      "loaded": true
+    },
+    {
+      "src": "/images/autokey3d.webp",
       "loaded": true
     }
   ],

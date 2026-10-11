@@ -14,17 +14,18 @@ export const projects=[
  {
   name:'SLAB',
   category:'Construction Services Marketplace',
-  image:'/images/slab.png',
+  image:'/images/slab.webp',
   alt:'SLAB platform interface',
   description:'Connecting sites with the right equipment and service providers.',
   details:['Connects customers with verified JCBs, cranes, and construction service providers across Kerala.'],
   tech:['React','TypeScript','FastAPI','Python','SQL','Supabase'],
-  url:'https://github.com/RandellRonald/Slab'
+  url:'https://github.com/RandellRonald/Slab',
+  liveUrl:'https://slab-topaz.vercel.app/'
  },
  {
   name:'SmartLand',
   category:'Location Intelligence',
-  image:'/images/smartland.png',
+  image:'/images/smartland.webp',
   alt:'SmartLand location analysis interface',
   description:'Turn coordinates into clear, explainable location insight.',
   details:['Analyzes geographic locations using deterministic spatial rules and public datasets to provide environmental risk, infrastructure, and livability context for real-world location decisions.'],
@@ -34,7 +35,7 @@ export const projects=[
  {
   name:'AutoBlueprint',
   category:'Architectural Planning System',
-  image:'/images/autoblueprint.png',
+  image:'/images/autoblueprint.webp',
   alt:'AutoBlueprint interface showing a generated residential model',
   description:'Generate constraint-aware residential blueprints from real-world rules.',
   details:['A backend-driven planning system that generates 2D architectural blueprints and derives 3D models using deterministic geometry, validation, circulation logic, and real-world measurements.'],
@@ -44,7 +45,7 @@ export const projects=[
  {
   name:'AutoKey3D',
   category:'Parametric 3D Generation',
-  image:'/images/autokey3d.png',
+  image:'/images/autokey3d.webp',
   alt:'AutoKey3D generated key model interface',
   description:'Generate unique, manufacturable 3D key models programmatically.',
   details:['Generates parametric 3D key designs, previews them interactively, and produces STL output while using SHA256-based hashing for design uniqueness.'],

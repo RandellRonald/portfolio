@@ -11,7 +11,7 @@ const images=await page.locator('img').evaluateAll(imgs=>imgs.map(i=>({src:i.get
 if(images.some(i=>!i.loaded))throw new Error('Image failed: '+JSON.stringify(images));
 for(const id of ['home','about','projects','skills','contact']){await page.locator('nav a[href="#'+id+'"]').click();await page.waitForTimeout(850);if(!(await page.locator('#'+id).count()))throw new Error('Missing section '+id);}
 const links=await page.locator('a').evaluateAll(as=>as.map(a=>a.getAttribute('href')));
-for(const href of ['mailto:randellronald5@gmail.com','tel:8075548419','https://github.com/RandellRonald/Smartland','https://github.com/RandellRonald/AutoBlueprint','https://github.com/RandellRonald/AutoKey3D','https://www.linkedin.com/in/randell-ronald-60492336b/'])if(!links.includes(href))throw new Error('Missing link '+href);
+for(const href of ['https://slab-topaz.vercel.app/','https://mail.google.com/mail/?view=cm&fs=1&to=randellronald5@gmail.com','tel:8075548419','https://github.com/RandellRonald/Slab','https://github.com/RandellRonald/Smartland','https://github.com/RandellRonald/AutoBlueprint','https://github.com/RandellRonald/AutoKey3D','https://www.linkedin.com/in/randell-ronald-60492336b/'])if(!links.includes(href))throw new Error('Missing link '+href);
 await page.setViewportSize({width:390,height:844});await page.goto('http://127.0.0.1:5173/',{waitUntil:'networkidle'});await page.screenshot({path:'mobile-preview.png',fullPage:true});
 if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw new Error('Mobile horizontal overflow');
 await page.getByRole('button',{name:'Open navigation'}).click();await page.locator('nav a[href="#projects"]').click();await page.waitForTimeout(1000);
