@@ -1,8 +1,15 @@
 export const profile = {
  name:'Randell Ronald', email:'randellronald5@gmail.com', phone:'8075548419',
  github:'https://github.com/RandellRonald', linkedin:'https://www.linkedin.com/in/randell-ronald-60492336b/',
+ emailComposeUrl: 'https://mail.google.com/mail/?view=cm&fs=1&to=randellronald5@gmail.com',
 };
-export const skills=[{name:'Languages',items:['Python','JavaScript','HTML','CSS']},{name:'Frontend',items:['React']},{name:'Platforms',items:['Firebase']},{name:'Tools',items:['Git','GitHub']}];
+export const skills=[
+ {name:'Languages',items:['Python','JavaScript','HTML','CSS']},
+ {name:'Frontend',items:['React']},
+ {name:'Backend & APIs',items:['FastAPI','REST API']},
+ {name:'Databases & Platforms',items:['MySQL','Firebase']},
+ {name:'Tools',items:['Git','GitHub']}
+];
 export const projects=[
  {
   name:'SLAB',
@@ -10,7 +17,7 @@ export const projects=[
   image:'/images/slab.png',
   alt:'SLAB platform interface',
   description:'Connecting sites with the right equipment and service providers.',
-  details:['Connects customers with verified construction equipment (JCB, crane) and service providers through booking, transparent estimates, smart matching, tracking, and site operations across Kerala.'],
+  details:['Connects customers with verified JCBs, cranes, and construction service providers across Kerala.'],
   tech:['React','TypeScript','FastAPI','Python','SQL','Supabase'],
   url:'https://github.com/RandellRonald/Slab'
  },
